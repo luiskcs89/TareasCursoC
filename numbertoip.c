@@ -1,21 +1,30 @@
 #include <stdio.h>
 #include <stdint.h>
 
-char *numbertoip(uint32_t number);
+int numbertoip(uint32_t number, char* buffer);
 
 int main(int argc, char **argv){
-	numbertoip((uint32_t) 0x00FF00FF);
+	char buffer[15];
+	numbertoip((uint32_t) 0xFFFFFFFF, buffer);
+	printf(buffer);
+	printf("\n");
 }
 
 
-char *numbertoip(uint32_t number){
+int numbertoip(uint32_t number, char* buffer){
 	uint32_t mask = 0xFF;
-	
-	printf("%d.", ((number >> 24) & mask));
-	printf("%d.", ((number >> 16) & mask));
-	printf("%d.", ((number >> 8) & mask));
-	printf("%d\n", (number & mask));
-
-	return NULL;
+	sprintf(buffer, "%d.%d.%d.%d", ((number >> 24) & mask), ((number >> 16) & mask), ((number >> 8) & mask), (number & mask));
+	return 1;
 }
 
+int numbertonetmask(int32_t number, char* buffer){
+	int32_t netmask = 0;
+	number = 32-number;
+
+	for(; number<32; number++){
+		netmask |= (uint32_t)(1 << number);
+	}	
+	numbertoip(netmask, buffer);
+	
+	return 1;
+}

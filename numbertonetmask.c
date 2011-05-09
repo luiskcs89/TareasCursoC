@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "func.h"
 
-int main(int argc, char **argv){	
+int main(int argc, char **argv){
 	if(argc > 1)
 	{
 		int i;
@@ -11,7 +11,7 @@ int main(int argc, char **argv){
 			char buffer[15];
 			char* end;
 			uint32_t number = (uint32_t) strtoul(argv[i], 0, 0);
-			numbertoip(number, buffer);
+			numbertonetmask(number, buffer);
 			printf(buffer);
 			printf("\n");
 		}

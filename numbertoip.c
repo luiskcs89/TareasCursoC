@@ -10,7 +10,7 @@ int main(int argc, char **argv){
 		numbertoip(number, buffer);
 		printf("Address is %s\n", buffer);
 	} else {
-		printf("%s needs one argument (unsigned int)\n", *argv);
+		fprintf(stderr, "%s needs one argument (unsigned int)\n", *argv);
 	}
 }
 

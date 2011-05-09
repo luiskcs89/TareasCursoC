@@ -14,7 +14,7 @@ int main(int argc, char **argv){
 		printf("Network is %s\n, ", netbuffer);
 		printf("Mask is %s\n", maskbuffer);
 	} else {
-		printf("%s needs two arguments (unsigned int)\n", *argv);
+		fprintf(stderr, "%s needs two arguments (unsigned int)\n", *argv);
 	}
 }
 

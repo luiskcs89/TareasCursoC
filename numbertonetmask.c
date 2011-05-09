@@ -3,20 +3,18 @@
 #include "func.h"
 
 int main(int argc, char **argv){
-	if(argc > 1)
+	if(argc == 3)
 	{
-		int i;
-		for(i = 1; i < argc; i++)
-		{
-			char buffer[15];
-			char* end;
-			uint32_t number = (uint32_t) strtoul(argv[i], 0, 0);
-			numbertonetmask(number, buffer);
-			printf(buffer);
-			printf("\n");
-		}
+		char netbuffer[16];
+		char maskbuffer[16];
+		uint32_t number = (uint32_t) strtoul(argv[1], 0, 0);
+		uint32_t numbermask = (uint32_t) strtoul(argv[2], 0, 0);
+		uint32_t mask = numbertonetmask(numbermask, maskbuffer);
+		numbertosubnet(number, mask, netbuffer);
+		printf("Network is %s\n, ", netbuffer);
+		printf("Mask is %s\n", maskbuffer);
 	} else {
-		printf("No arguments\n");
+		printf("%s needs two arguments (unsigned int)\n", *argv);
 	}
 }
 

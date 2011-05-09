@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdint.h>
+#include "func.h"
 
 int numbertoip(uint32_t number, char* buffer){
 	uint32_t mask = 0xFF;
@@ -7,8 +6,14 @@ int numbertoip(uint32_t number, char* buffer){
 	return 1;
 }
 
-int numbertonetmask(int32_t number, char* buffer){
-	int32_t netmask = 0;
+int numbertosubnet(uint32_t number, uint32_t maskp, char* buffer){
+	uint32_t tmpmask = number&maskp;
+	numbertoip(tmpmask, buffer);
+	return 1;
+}
+
+uint32_t numbertonetmask(uint32_t number, char* buffer){
+	uint32_t netmask = 0;
 	number = 32-number;
 
 	for(; number<32; number++){
@@ -16,5 +21,5 @@ int numbertonetmask(int32_t number, char* buffer){
 	}	
 	numbertoip(netmask, buffer);
 	
-	return 1;
+	return netmask;
 }

@@ -8,6 +8,10 @@ Objetivo 2
 
 A la vez se encuentra el target all el cual se encarga de generar ambos targets y a la vez realizar un clean del directorio, tambien puedes encontrar los targets install e uninstall los cuales se encargan de instalar los archivos en las carpetas correspondientes, se utiliza una libreria dinamica para dicha tarea.
 
+Para instalar la aplicacion es necesario tener permisos de administrador (root), si se desea utilizar la aplicacion sin ser instalada seria necesario 'setear' la variable de entorno $LD_LIBRARY_PATH.
+Ejemplo: ejecutar el siguiente comando dentro de la carpeta en la cual se encuentra la libreria dinamica:
+	export LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH 
+
 Autores:
 Luis Carlos Chacon
 David Astua Mora

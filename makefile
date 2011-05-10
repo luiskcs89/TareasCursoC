@@ -1,4 +1,6 @@
 all: libnumtoip.so numbertoip numbertonetmask clean 
+	LD_LIBRARY_PATH=$(CURDIR)
+	export LD_LIBRARY_PATH
 
 numbertoip: numbertoip.c func.c libnumtoip.so 
 	cc -c numbertoip.c -o numbertoip.o

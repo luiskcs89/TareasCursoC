@@ -1,16 +1,27 @@
-all: numbertoip numbertonetmask clean 
+all: libnumtoip.so numbertoip numbertonetmask clean 
 
-numbertoip: numbertoip.c func.c
+numbertoip: numbertoip.c func.c libnumtoip.so 
 	cc -c numbertoip.c -o numbertoip.o
-	cc -c func.c -o func.o
-	cc -o numbertoip numbertoip.o func.o
+	cc -o numbertoip numbertoip.o -L. -lnumtoip
 
-numbertonetmask: numbertonetmask.c func.c
+numbertonetmask: numbertonetmask.c func.c libnumtoip.so
 	cc -c numbertonetmask.c -o numbertonetmask.o
-	cc -c func.c -o func.o
-	cc -o numbertonetmask numbertonetmask.o func.o
+	cc -o numbertonetmask numbertonetmask.o -L. -lnumtoip
 
-.PHONY: clean
+libnumtoip.so: func.c func.h 
+	cc -fPIC -c func.c 
+	gcc -shared -olibnumtoip.so func.o
+
+.PHONY: clean install uninstall
 clean:
 	rm -f *.o
 
+install: numbertoip numbertonetmask
+	cp numbertoip /usr/bin/
+	cp numbertonetmask /usr/bin/
+	cp libnumtoip.so /usr/lib/
+	
+uninstall: 
+	rm -f /usr/bin/numbertoip
+	rm -f /usr/bin/numbertonetmask
+	rm -f /usr/lib/libnumtoip.so

@@ -6,7 +6,7 @@ Objetivo 1
 Objetivo 2
 	Se encuentra contemplado dentro de los archivos func.c, func.h y numbertonetmask.c el target del makefile para este objetivo es llamado numbertonetmask
 
-A la vez se encuentra el target all el cual se encarga de generar ambos targets y a la vez realizar un clean del directorio
+A la vez se encuentra el target all el cual se encarga de generar ambos targets y a la vez realizar un clean del directorio, tambien puedes encontrar los targets install e uninstall los cuales se encargan de instalar los archivos en las carpetas correspondientes, se utiliza una libreria dinamica para dicha tarea.
 
 Autores:
 Luis Carlos Chacon

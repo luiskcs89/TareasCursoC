@@ -52,4 +52,10 @@ uint32_t numbertonetmask(uint32_t number, char* buffer){
 	return netmask;
 }
 
+/*
+* Reads an unsigned int fom the given string return 1 if sucessful
+*/
+int readnumber(const char *str, uint32_t *number){
+	return sscanf(str, "%u", number);
+}
 

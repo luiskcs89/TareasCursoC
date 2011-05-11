@@ -7,18 +7,18 @@
 int main(int argc, char **argv){
 	if(argc == 3)
 	{
-		errno=0;
 		char netbuffer[16];
 		char maskbuffer[16];
-
-		uint32_t number = (uint32_t) strtoul(argv[1], 0, 0);
-		if(errno)
+		uint32_t number, numbermask;
+		int result = readnumber(argv[1], &number);
+		
+		if(result != 1)
 		{
 			fprintf(stderr, "%s needs two arguments (unsigned int)\n", argv[0]);
 			exit(-1);
 		}
-		uint32_t numbermask = (uint32_t) strtoul(argv[2], 0, 0);
-		if(errno)
+		result = readnumber(argv[2], &numbermask);
+		if(result != 1)
 		{
 			fprintf(stderr, "%s needs two arguments (unsigned int)\n", argv[0]);
 			exit(-1);

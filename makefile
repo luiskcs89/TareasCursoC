@@ -1,16 +1,16 @@
 all: libnumtoip.so numbertoip numbertonetmask clean 
 
 numbertoip: numbertoip.c func.c libnumtoip.so 
-	cc -c numbertoip.c -o numbertoip.o
-	cc -o numbertoip numbertoip.o -L. -lnumtoip
+	cc -g3 -c numbertoip.c -o numbertoip.o
+	cc -g3 -o numbertoip numbertoip.o -L. -lnumtoip
 
 numbertonetmask: numbertonetmask.c func.c libnumtoip.so
-	cc -c numbertonetmask.c -o numbertonetmask.o
-	cc -o numbertonetmask numbertonetmask.o -L. -lnumtoip
+	cc -g3 -c numbertonetmask.c -o numbertonetmask.o
+	cc -g3 -o numbertonetmask numbertonetmask.o -L. -lnumtoip
 
 libnumtoip.so: func.c func.h 
-	cc -fPIC -c func.c 
-	gcc -shared -olibnumtoip.so func.o
+	cc -g3 -fPIC -c func.c 
+	gcc  -shared -olibnumtoip.so func.o
 
 .PHONY: clean install uninstall
 clean:

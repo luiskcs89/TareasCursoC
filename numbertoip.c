@@ -7,10 +7,12 @@ int main(int argc, char **argv){
 	{
 		char buffer[16];
 		uint32_t number = (uint32_t) strtoul(argv[1], 0, 0);
+		if(number == 0)  errorandexit(*argv);
 		numbertoip(number, buffer);
 		printf("Address is %s\n", buffer);
 	} else {
-		fprintf(stderr, "%s needs one argument (unsigned int)\n", *argv);
+		errorandexit(*argv);
 	}
 }
+
 

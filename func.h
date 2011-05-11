@@ -7,6 +7,5 @@
 int numbertoip(uint32_t number, char* buffer);
 int numbertosubnet(uint32_t number, uint32_t mask, char* buffer);
 uint32_t numbertonetmask(uint32_t number, char* buffer);
-void errorandexit(const char *);
 
 #endif

@@ -52,12 +52,4 @@ uint32_t numbertonetmask(uint32_t number, char* buffer){
 	return netmask;
 }
 
-/*
-* Prints a message and exit from the program
-*/
-void errorandexit(const char *arg){
-	fprintf(stderr, "%s needs one argument (unsigned int)\n", arg);
-	exit(-1);
-}
-
 
